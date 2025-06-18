@@ -1,0 +1,35 @@
+## Archivos compilados
+bin/
+obj/
+
+## Configuración de usuario de Visual Studio
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Archivos temporales y dependencias
+.vscode/
+.env
+*.db
+*.sqlite
+*.log
+
+## Publicaciones
+publish/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.log
+*.pdb
+*.ilk
+*.obj
+*.exe
+*.dll
+*.cache
+[Bb]in/
+[Oo]bj/
+# Puede que quieras ignorar el Back si es un sub-repositorio Git separado o una carpeta que no quieres en este repo
+# ../Back/ # Si Back es otro repositorio o no quieres que esté aquí

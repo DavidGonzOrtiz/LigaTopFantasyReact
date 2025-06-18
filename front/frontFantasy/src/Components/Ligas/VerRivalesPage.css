@@ -1,0 +1,86 @@
+/* Estilo para el icono del deportista */
+.deportista-avatar {
+    font-size: 3.5em; /* Tamaño grande para el icono de balón */
+    color: #007bff; /* Color azul de Bootstrap primary */
+    line-height: 1; /* Eliminar espacio extra alrededor del icono */
+}
+
+/* Ajustes menores si son necesarios para los badges */
+.list-group-item .badge {
+    min-width: 50px; /* Asegura un ancho mínimo para los badges */
+    text-align: center;
+    padding: .4em .6em; /* Ajusta el padding */
+    font-size: .85em; /* Ajusta el tamaño de la fuente */
+}
+
+/* Opcional: Estilo de hover para las tarjetas si se desea algo más allá de la sombra */
+.deportista-card:hover {
+    transform: translateY(-3px);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* --- ESTILOS ACTUALIZADOS --- */
+
+/* La card principal de fondo ahora es azul oscura */
+.card.shadow-lg { /* Apuntamos específicamente a esta card */
+    background-color: #212529 !important; /* Azul muy oscuro de Bootstrap (dark) */
+    color: #f8f9fa; /* Texto claro para contraste */
+}
+
+    /* Ajustes de color para los títulos dentro de la card oscura */
+    .card.shadow-lg .team-title,
+    .card.shadow-lg .text-secondary {
+        color: #adb5bd !important; /* Un gris claro para los títulos */
+    }
+
+    /* Ajustes para el enlace "Volver a la liga" */
+    .card.shadow-lg .btn-outline-secondary {
+        color: #adb5bd; /* Color del texto del botón */
+        border-color: #adb5bd; /* Color del borde del botón */
+    }
+
+        .card.shadow-lg .btn-outline-secondary:hover {
+            background-color: #adb5bd; /* Fondo del botón al pasar el ratón */
+            color: #212529; /* Texto del botón al pasar el ratón */
+        }
+
+    /* Ajustes para los elementos de la DeportistaCard dentro de la card oscura */
+    .card.shadow-lg .deportista-card {
+        background-color: #343a40; /* Un gris oscuro para las tarjetas de los jugadores */
+        color: #f8f9fa; /* Texto claro para las tarjetas de los jugadores */
+        border-color: #495057; /* Borde oscuro para las tarjetas */
+    }
+
+        .card.shadow-lg .deportista-card .deportista-name {
+            color: #66ccff !important; /* Un azul claro para el nombre del deportista */
+        }
+
+        .card.shadow-lg .deportista-card .card-text.text-muted,
+        .card.shadow-lg .deportista-card .deportista-info {
+            color: #ced4da !important; /* Un gris más claro para la info secundaria */
+        }
+
+        /* Ajustar los colores de los list-group-item dentro de las DeportistaCard */
+        .card.shadow-lg .deportista-card .list-group-item {
+            background-color: transparent; /* Fondo transparente para los ítems de la lista */
+            border-color: rgba(255, 255, 255, 0.1); /* Borde blanco semi-transparente */
+            color: #f8f9fa; /* Color de texto claro */
+        }
+
+        /* Asegurar que los badges mantengan sus colores originales */
+        .card.shadow-lg .deportista-card .badge.bg-success {
+            background-color: #198754 !important; /* Verde original de Bootstrap */
+        }
+
+        .card.shadow-lg .deportista-card .badge.bg-info {
+            background-color: #0dcaf0 !important; /* Azul claro original de Bootstrap */
+        }
+
+        .card.shadow-lg .deportista-card .badge.bg-secondary {
+            background-color: #6c757d !important; /* Gris oscuro original de Bootstrap */
+        }
+
+        /* El deportista-avatar dentro de la card oscura */
+        .card.shadow-lg .deportista-card .deportista-avatar {
+            color: #66ccff; /* Un azul claro para el balón en la card oscura */
+        }

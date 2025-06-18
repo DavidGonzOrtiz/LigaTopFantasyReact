@@ -1,0 +1,562 @@
+/* src/components/Alineacion/AlineacionPage.css */
+
+
+
+.alineacion-container {
+    padding: 30px 20px; /* Más padding vertical */
+    max-width: 1400px; /* Aumentado para tarjetas más grandes */
+    margin: 0 auto;
+    color: #e0e6eb;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    min-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-title {
+    color: #6c9eeb;
+    margin-bottom: 50px; /* Más espacio debajo del título */
+    font-size: 3.2em; /* Tamaño de fuente más grande */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); /* Sombra más pronunciada */
+    letter-spacing: 2px;
+    font-weight: 800; /* Más negrita */
+}
+
+.alineacion-card {
+    background-color: rgba(26, 26, 46, 0.98); /* Fondo más opaco */
+    border: 1px solid #343a40;
+    border-radius: 20px; /* Bordes más redondeados */
+    padding: 50px; /* Más padding */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); /* Sombra más profunda */
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+/* --- Loading, Error, No Data States --- */
+.loading-state, .error-state, .no-data-state, .loading-players-state {
+    padding: 30px;
+    background-color: rgba(40, 40, 60, 0.9);
+    border-radius: 12px;
+    margin-top: 30px;
+    font-size: 1.3em;
+    color: #e0e6eb;
+    text-align: center;
+    font-weight: 500;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.alert {
+    padding: 20px 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 1.1em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: #ffeeba;
+}
+
+/* --- Form Controls (Formation Select) --- */
+.form-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 50px;
+    background-color: rgba(30, 30, 50, 0.85);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+    .form-group label {
+        font-size: 1.3em;
+        color: #8bbafc; /* Azul ligeramente más claro */
+        font-weight: bold;
+        flex-shrink: 0;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-group select {
+        padding: 14px 25px;
+        border: 2px solid #5a5a80;
+        border-radius: 12px;
+        background-color: #3b3b5c;
+        color: #e0e6eb;
+        font-size: 1.2em;
+        cursor: pointer;
+        appearance: none;
+        background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236c9eeb%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.6-6.4H18.9c-5%200-9.7%202-13.6%206.4-7.8%207.9-7.8%2020.7%200%2028.6l128.8%20128.9c3.9%203.9%209%206.1%2014.1%206.1s10.2-2.2%2014.1-6.1l128.8-128.9c7.8-7.9%207.8-20.7%200-28.6z%22/%3E%3C/svg%3E');
+        background-repeat: no-repeat;
+        background-position: right 18px center;
+        background-size: 16px;
+        min-width: 220px;
+        box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease;
+    }
+
+        .form-group select:focus {
+            outline: none;
+            border-color: #a0c4ff; /* Azul más claro al enfocar */
+            box-shadow: 0 0 12px rgba(108, 158, 235, 1), inset 0 1px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        .form-group select:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background-color: #2b2b45;
+        }
+
+.selected-count {
+    font-size: 1.4em;
+    color: #e0e6eb;
+    font-weight: 600;
+    margin-top: 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.ready-text {
+    color: #5eff5e;
+    margin-left: 10px;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(94, 255, 94, 0.8);
+    animation: pulse 1.5s infinite alternate; /* Animación de pulsación */
+}
+
+/* Animación de pulsación para el texto "¡Listo para validar!" */
+@keyframes pulse {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    to {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+}
+
+
+/* --- Players by Position Sections --- */
+/* Eliminamos player-cards-grid y el grid aquí ya que usaremos flexbox en .jugadores-cards-container */
+.players-by-position {
+    /* display: grid; */ /* Ya no es necesario aquí */
+    /* grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); */
+    gap: 40px; /* Más espacio entre secciones */
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.position-section {
+    background-color: rgba(35, 35, 60, 0.9); /* Ligeramente más claro y más opaco */
+    border: 1px solid #4a4a60;
+    border-radius: 18px; /* Bordes más redondeados */
+    padding: 30px; /* Más padding */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 30px; /* Margen entre secciones de posición */
+}
+
+    .position-section:hover {
+        transform: translateY(-8px); /* Efecto hover más pronunciado */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .position-section h3 { /* Cambiado de h2 a h3 para coincidir con tu HTML */
+        color: #8bbafc;
+        font-size: 1.8em; /* Tamaño de fuente más grande */
+        margin-bottom: 25px;
+        border-bottom: 3px solid #5a5a80; /* Borde más grueso */
+        padding-bottom: 15px;
+        font-weight: 700;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+.no-players-message {
+    color: #aaa;
+    font-style: italic;
+    padding: 20px;
+    background-color: rgba(30, 30, 50, 0.6);
+    border-radius: 10px;
+    margin-top: 20px;
+    grid-column: 1 / -1;
+    font-size: 1.1em;
+}
+
+/* --- Player Cards Grid & Individual Card Styling --- */
+.jugadores-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem; /* Aumentado el espacio entre tarjetas */
+    margin-top: 1rem;
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    list-style: none; /* Asegura que no haya viñetas */
+    padding: 0;
+}
+
+.jugador-card {
+    /* Restamos el padding de 20px para que el ancho final sea similar al original si se desea */
+    width: 200px; /* Ancho fijo para las tarjetas */
+    background-color: #2a2a4a;
+    border: 2px solid #4a4a6a;
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+    .jugador-card label {
+        display: flex; /* Para alinear el checkbox y la información */
+        flex-direction: column; /* Coloca checkbox arriba de la info o viceversa */
+        align-items: center; /* Centra los elementos dentro del label */
+        cursor: pointer;
+        width: 100%; /* Asegura que el label ocupe todo el espacio de la tarjeta */
+        padding: 0;
+        margin: 0;
+    }
+
+    .jugador-card input[type="checkbox"] {
+        /* Puedes ajustar la posición del checkbox si quieres */
+        margin-bottom: 10px; /* Espacio entre el checkbox y el nombre del jugador */
+        transform: scale(1.3); /* Hace el checkbox un poco más grande */
+        accent-color: #6c9eeb; /* Color del checkbox cuando está marcado */
+    }
+
+    .jugador-card:hover {
+        background-color: #3f3f6a;
+        transform: translateY(-5px) scale(1.02);
+        border-color: #6c9eeb;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .jugador-card.selected {
+        background-color: #6c9eeb;
+        color: #1a1a2e; /* Color de texto oscuro para la tarjeta seleccionada */
+        border-color: #4a77d1;
+        box-shadow: 0 0 20px rgba(108, 158, 235, 1.2);
+        transform: scale(1.05);
+    }
+        /* Ajustes para el texto dentro de la tarjeta seleccionada */
+        .jugador-card.selected .jugador-info h4 {
+            color: #1a1a2e;
+        }
+
+        .jugador-card.selected .jugador-info p {
+            color: #4a4a6a; /* Un color ligeramente más oscuro para la descripción */
+        }
+
+.jugador-info {
+    width: 100%; /* Asegura que la información ocupe el ancho de la tarjeta */
+}
+
+    .jugador-info h4 {
+        margin: 0;
+        font-size: 1.3rem; /* Tamaño de fuente más grande para el nombre */
+        color: #e0e6eb; /* Color de texto predeterminado */
+        font-weight: 600;
+    }
+
+    .jugador-info p {
+        margin: 0.3rem 0;
+        font-size: 0.95rem; /* Tamaño de fuente ligeramente más grande para el equipo y la posición */
+        color: #b0b0cc; /* Color de texto más suave */
+    }
+
+.titular-badge {
+    display: inline-block;
+    margin-top: 0.8rem; /* Más espacio encima del badge */
+    padding: 0.3rem 0.7rem; /* Más padding para el badge */
+    background-color: #28a745;
+    color: white;
+    border-radius: 6px; /* Bordes más redondeados */
+    font-size: 0.85rem; /* Tamaño de fuente ligeramente más grande */
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Alinea los ítems al inicio y al final */
+    align-items: center;
+    width: 100%; /* Asegúrate de que ocupe todo el ancho disponible */
+    margin-top: 40px; /* Margen superior para separarlo del contenido anterior */
+    padding: 0 20px; /* Un poco de padding horizontal si es necesario */
+}
+
+/* Estilo para el botón Atrás para que coincida con el tema */
+.btn-back {
+    background-color: transparent;
+    color: #6c9eeb; /* Color de texto azul claro */
+    border: 2px solid #6c9eeb; /* Borde del mismo color */
+    padding: 12px 25px; /* Ajusta el padding */
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .btn-back:hover {
+        background-color: #6c9eeb;
+        color: #1a1a2e; /* Color de texto oscuro al pasar el ratón */
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(108, 158, 235, 0.4);
+    }
+
+    .btn-back:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+/* --- Save Button --- */
+.btn-submit { /* Cambiado de .save-alineacion-button a .btn-submit para coincidir con tu HTML */
+    background-color: #6c9eeb;
+    color: #1a1a2e;
+    padding: 20px 45px; /* Más padding */
+    border: none;
+    border-radius: 12px; /* Más redondeado */
+    font-size: 1.4em; /* Más grande */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 40px; /* Margen superior para separarlo de las tarjetas */
+    margin-bottom: 20px; /* Margen inferior para darle espacio */
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    letter-spacing: 1px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase; /* Texto en mayúsculas */
+}
+
+    .btn-submit:hover {
+        background-color: #4a77d1;
+        transform: translateY(-6px); /* Efecto de elevación más pronunciado */
+        box-shadow: 0 12px 25px rgba(108, 158, 235, 0.7);
+    }
+
+    .btn-submit:disabled {
+        background-color: #444;
+        color: #888;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+        opacity: 0.5;
+    }
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1200px) {
+    /* .players-by-position ya no es grid */
+
+    .jugador-card {
+        padding: 18px;
+        width: 180px; /* Ajusta el ancho de las tarjetas para pantallas medianas */
+    }
+
+    .jugador-info h4 {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 992px) {
+    /* .players-by-position ya no es grid */
+
+    .page-title {
+        font-size: 2.6em;
+        margin-bottom: 40px;
+    }
+
+    .alineacion-card {
+        padding: 40px;
+    }
+
+    .form-group select {
+        min-width: 180px;
+        font-size: 1.1em;
+    }
+
+    .jugador-card {
+        padding: 15px;
+        width: 160px; /* Ajusta el ancho de las tarjetas para pantallas más pequeñas */
+    }
+
+    .jugador-info h4 {
+        font-size: 1.1em;
+    }
+
+    .jugador-info p {
+        font-size: 0.9em;
+    }
+
+    .btn-submit {
+        padding: 16px 35px;
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2.2em;
+        margin-bottom: 30px;
+    }
+
+    .alineacion-card {
+        padding: 30px;
+    }
+
+    .form-controls {
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .form-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+        .form-group select {
+            width: 100%;
+            min-width: unset;
+        }
+
+    .selected-count {
+        font-size: 1.2em;
+    }
+
+    /* .players-by-position ya no es grid */
+
+    .position-section {
+        padding: 25px;
+    }
+
+        .position-section h3 {
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+
+    .jugadores-cards-container {
+        flex-direction: column; /* Apila las tarjetas en vertical para móviles */
+        align-items: center; /* Centra las tarjetas apiladas */
+        gap: 1rem;
+    }
+
+    .jugador-card {
+        width: 90%; /* Las tarjetas ocuparán el 90% del ancho disponible */
+        max-width: 300px; /* Límite máximo para que no se hagan demasiado anchas en pantallas grandes */
+        flex-direction: row; /* Enfila el contenido de la tarjeta en móvil */
+        justify-content: flex-start; /* Alinea el contenido a la izquierda */
+        align-items: center;
+        text-align: left;
+        padding: 15px;
+    }
+
+        .jugador-card label {
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px; /* Espacio entre checkbox e info */
+        }
+
+        .jugador-card input[type="checkbox"] {
+            margin-bottom: 0;
+            flex-shrink: 0; /* Evita que el checkbox se encoja */
+        }
+
+    .jugador-info {
+        text-align: left;
+        align-items: flex-start;
+        flex-grow: 1; /* Permite que la información ocupe el espacio restante */
+    }
+
+        .jugador-info h4 {
+            font-size: 1.2em;
+        }
+
+        .jugador-info p {
+            font-size: 0.85em;
+        }
+
+    .titular-badge {
+        margin-left: auto; /* Mueve el badge a la derecha */
+        margin-top: 0;
+    }
+
+    .btn-submit {
+        width: 100%;
+        padding: 18px 30px;
+        font-size: 1.2em;
+    }
+
+    
+}
+
+@media (max-width: 480px) {
+    .alineacion-container {
+        padding: 20px 10px;
+    }
+
+    .page-title {
+        font-size: 2em;
+    }
+
+    .alineacion-card {
+        padding: 20px;
+    }
+
+    .form-controls {
+        padding: 15px;
+    }
+
+    .jugador-card {
+        padding: 12px;
+    }
+
+    .jugador-info h4 {
+        font-size: 1.1em;
+    }
+
+    .jugador-info p {
+        font-size: 0.8em;
+    }
+
+    .btn-submit {
+        padding: 15px 25px;
+        font-size: 1.1em;
+    }
+}

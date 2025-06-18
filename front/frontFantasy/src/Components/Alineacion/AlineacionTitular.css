@@ -1,0 +1,68 @@
+.alineacion-titular-page-container {
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    text-align: center;
+}
+
+.campo-futbol {
+    background: linear-gradient(#228B22, #006400); /* césped verde */
+    border: 5px solid white;
+    border-radius: 15px;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+    min-height: 600px;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.linea {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.jugador-titular {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #2c3e50;
+    border-radius: 10px;
+    padding: 1rem;
+    width: 140px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+
+    .jugador-titular:hover {
+        transform: scale(1.05);
+    }
+
+.jugador-nombre {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+}
+
+.jugador-posicion,
+.jugador-puntos {
+    font-size: 0.9rem;
+    margin: 0.2rem 0;
+}
+
+/* líneas de jugadores para dar forma de campo */
+.linea-portero {
+    margin-top: 1rem;
+}
+
+.linea-defensa {
+    margin-top: 1rem;
+}
+
+.linea-centrocampista {
+    margin-top: 1rem;
+}
+
+.linea-delantero {
+    margin-top: 1rem;
+}

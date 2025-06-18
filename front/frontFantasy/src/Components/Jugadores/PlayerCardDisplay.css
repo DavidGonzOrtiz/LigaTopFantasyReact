@@ -1,0 +1,73 @@
+/* src/components/Ligas/PlayerCardDisplay.css */
+
+.player-card-display {
+    /* Define un ancho fijo para cada tarjeta.
+       Calcula el ancho: (100% / 5) - (gap entre elementos)
+       Por ejemplo, si gap es 15px, 100%/5 = 20%. Luego resta un poco para el gap.
+       Usar calc() es lo más robusto. */
+    width: calc(20% - 15px); /* 20% para 5 elementos - 15px para el gap (mitad a cada lado de cada tarjeta) */
+    min-width: 180px; /* Evita que las tarjetas se hagan demasiado pequeñas en pantallas muy estrechas */
+    max-width: 220px; /* Evita que las tarjetas se hagan demasiado grandes en pantallas muy anchas */
+    /* Otros estilos de la tarjeta (bordes, sombras, colores, etc.) */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: rgba(26, 26, 46, 0.9);
+    color: #f0f0f0; /* Color de texto claro */
+    text-align: center;
+    display: flex; /* Para organizar el contenido interno de la tarjeta */
+    flex-direction: column; /* Contenido interno vertical */
+    align-items: center; /* Centra el contenido */
+}
+
+/* Si tienes la imagen del jugador */
+/* Descomenta y ajusta si usas la imagen
+.player-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+*/
+
+/* Estilos del texto */
+/* ¡ESTOS ESTABAN MAL ANIDADOS Y SE HAN MOVIDO FUERA! */
+.player-name {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.player-position, .player-value, .player-team, .player-points {
+    font-size: 0.9em;
+    margin-bottom: 3px;
+    color: #bbb;
+}
+
+
+/* Media queries para ajustar el número de columnas en pantallas más pequeñas */
+@media (max-width: 1200px) {
+    .player-card-display {
+        width: calc(25% - 15px); /* 4 por fila */
+    }
+}
+
+@media (max-width: 992px) {
+    .player-card-display {
+        width: calc(33.33% - 15px); /* 3 por fila */
+    }
+}
+
+@media (max-width: 768px) {
+    .player-card-display {
+        width: calc(50% - 15px); /* 2 por fila */
+    }
+}
+
+@media (max-width: 576px) {
+    .player-card-display {
+        width: calc(100% - 15px); /* 1 por fila */
+    }
+}

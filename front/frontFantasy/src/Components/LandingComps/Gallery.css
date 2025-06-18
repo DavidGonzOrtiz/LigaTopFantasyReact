@@ -1,0 +1,89 @@
+/* Components/LandingComps/Gallery.css */
+
+/* Estilos para la sección completa de la galería */
+.gallery-section {
+	/* Si quieres un fondo oscuro o con degradado para la sección */
+	background-color: #1a1a2e; /* Color oscuro de ejemplo */
+	padding: 5rem 0; /* Asegura un buen padding superior e inferior */
+}
+
+/* Estilo para el degradado en el título (usado también en Features.css y aquí) */
+.text-gradient-sporty {
+	background: linear-gradient(45deg, #00c6ff, #0072ff); /* Azul deportivo */
+	-webkit-background-clip: text; /* Para navegadores basados en Webkit */
+	-webkit-text-fill-color: transparent; /* Para navegadores basados en Webkit */
+	background-clip: text; /* Estándar */
+	color: transparent; /* Fallback para navegadores antiguos */
+}
+
+/* Estilos para el elemento individual de la galería (la "tarjeta" de imagen) */
+.gallery-item {
+	position: relative; /* Necesario para posicionar el overlay */
+	cursor: pointer; /* Indica que es interactivo */
+	transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para hover */
+}
+
+	/* Efecto al pasar el ratón sobre el elemento de la galería */
+	.gallery-item:hover {
+		transform: translateY(-5px); /* Pequeño levantamiento */
+		/* Sombra con el color del degradado, más pronunciada y brillante */
+		box-shadow: 0 1rem 3rem rgba(0, 198, 255, 0.3) !important;
+	}
+
+/* Estilo para la imagen dentro de la galería */
+.gallery-image {
+	display: block; /* Asegura que la imagen no tenga espacio extra inferior */
+	width: 100%; /* Ocupa todo el ancho de su contenedor */
+	height: auto; /* Mantiene la proporción de aspecto */
+	transition: transform 0.3s ease; /* Transición para el zoom de la imagen */
+}
+
+/* Zoom ligero de la imagen al pasar el ratón */
+.gallery-item:hover .gallery-image {
+	transform: scale(1.05);
+}
+
+/* Estilos para el overlay que aparece al pasar el ratón */
+.gallery-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente oscuro */
+	opacity: 0; /* Inicialmente oculto */
+	transition: opacity 0.3s ease; /* Transición suave para la aparición */
+	border-radius: inherit; /* Hereda el border-radius del padre .gallery-item */
+	/* Para centrar el texto dentro del overlay */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none; /* Permite hacer clic a través del overlay si no hay texto */
+}
+
+/* El overlay se vuelve visible al pasar el ratón */
+.gallery-item:hover .gallery-overlay {
+	opacity: 1;
+	pointer-events: auto; /* Permite la interacción si hay algo clicable dentro */
+}
+
+/* Estilos para el texto dentro del overlay */
+.overlay-text {
+	color: #fff; /* Color del texto */
+	text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra de texto para mejor lectura */
+	font-size: 1.5rem; /* Ajusta el tamaño de fuente si es necesario */
+	font-weight: bold;
+	text-align: center;
+	padding: 0 1rem; /* Espaciado alrededor del texto */
+}
+
+/* Estilos opcionales para mejorar la apariencia de las imágenes de marcador de posición
+   si aún las estás usando, o para dar un efecto sutil a tus imágenes reales. */
+img[src*="placeholder.com"],
+.gallery-image {
+	filter: brightness(0.8) grayscale(0.1); /* Oscurece y desatura ligeramente */
+}
+
+.gallery-item:hover .gallery-image {
+	filter: brightness(1) grayscale(0); /* Normaliza al pasar el ratón */
+}

@@ -1,0 +1,229 @@
+/* ShareLigaButton.css */
+
+/* Style for the button that opens the modal */
+.btn.btn-warning.btn-lg {
+    font-weight: 600; /* Make text bolder */
+    padding: 12px 25px; /* More padding for a bigger button */
+    border-radius: 8px; /* Slightly rounded corners */
+    /* Removed transition for hover effects if you want absolutely no movement */
+}
+
+    /* Removed hover effects if you want absolutely no movement */
+    /*
+.btn.btn-warning.btn-lg:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+*/
+
+    .btn.btn-warning.btn-lg.disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+        transform: none; /* Ensure no transform */
+        box-shadow: none; /* Ensure no shadow */
+    }
+
+/* --- Modal Specific Styles --- */
+
+/* The modal backdrop/overlay */
+.modal.d-block {
+    background-color: rgba(0, 0, 0, 0.6); /* Explicitly set backdrop color */
+    display: block !important; /* Ensure it's a block element */
+    z-index: 1050; /* Bootstrap's default modal z-index */
+    position: fixed; /* Ensure it covers the whole viewport */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-y: auto; /* Allow vertical scroll for modal content if it's very tall */
+    /* Removed flex properties that were for centering */
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+/* Modal dialog container */
+.modal-dialog {
+    max-width: 500px;
+    width: 90%; /* Responsive width for smaller screens */
+    /* Positioning the modal to the top-center */
+    margin: 30px auto 0 auto; /* Top margin of 30px, auto for horizontal centering */
+    /* Removed modal-dialog-centered effect */
+    transform: none !important; /* Override any Bootstrap centering transforms */
+}
+
+/* Modal content box */
+.modal-content {
+    background-color: #1a1a2e; /* Darker background to match your theme */
+    color: #e0e6eb; /* Light text for contrast */
+    border: none; /* Remove default border */
+    border-radius: 12px; /* Consistent rounded corners */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7); /* Stronger shadow for depth */
+    /* Removed transition properties */
+}
+
+/* Modal header */
+.modal-header {
+    border-bottom: 1px solid #2a2a4a; /* Subtle border for separation */
+    padding: 1.5rem; /* More padding */
+}
+
+    .modal-header .modal-title {
+        font-size: 1.5rem; /* Larger title */
+        font-weight: 700;
+        color: #6c9eeb; /* Blue color for title */
+    }
+
+    /* Close button for dark backgrounds */
+    .modal-header .btn-close {
+        filter: invert(1) grayscale(1) brightness(2); /* Makes the Bootstrap X icon white */
+        opacity: 0.8;
+        /* Removed transition for opacity */
+    }
+
+/* Removed hover transition for close button */
+/*
+.modal-header .btn-close:hover {
+    opacity: 1;
+}
+*/
+
+/* Modal body */
+.modal-body {
+    padding: 2rem 1.5rem; /* Increased padding */
+}
+
+    .modal-body .lead {
+        font-size: 1.15rem; /* Slightly larger lead text */
+        color: #c0ccda; /* Softer white for instructional text */
+    }
+
+    /* Input field for the code */
+    .modal-body .form-control {
+        background-color: #2a2a4a; /* Darker input background */
+        border: 1px solid #3a3a5a; /* Subtle border */
+        color: #e0e6eb; /* Light text color */
+        font-size: 1rem;
+        padding: 0.75rem 1rem;
+        border-radius: 8px 0 0 8px; /* Rounded left side */
+    }
+
+        .modal-body .form-control:focus {
+            background-color: #3a3a5a; /* Slightly lighter on focus */
+            border-color: #6c9eeb; /* Blue border on focus */
+            box-shadow: 0 0 0 0.25rem rgba(108, 158, 235, 0.25); /* Blue glow on focus */
+        }
+
+    /* Copy button next to the input */
+    .modal-body .input-group .btn-outline-secondary {
+        background-color: #6c9eeb; /* Blue background for copy button */
+        border-color: #6c9eeb;
+        color: #1a1a2e; /* Dark text for contrast */
+        font-weight: 600;
+        padding: 0.75rem 1.25rem;
+        border-radius: 0 8px 8px 0; /* Rounded right side */
+        /* Removed transition for background-color and border-color */
+    }
+
+        /* Removed hover transition for copy button */
+        /*
+.modal-body .input-group .btn-outline-secondary:hover {
+    background-color: #5a8cdb;
+    border-color: #5a8cdb;
+    color: #fff;
+}
+*/
+
+        .modal-body .input-group .btn-outline-secondary:disabled {
+            background-color: #4a545c;
+            border-color: #4a545c;
+            color: #c0ccda;
+            cursor: not-allowed;
+        }
+
+    /* Error alert */
+    .modal-body .alert-danger {
+        background-color: #dc3545; /* Bootstrap's danger red */
+        color: #fff;
+        border-color: #dc3545;
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+/* Modal footer */
+.modal-footer {
+    border-top: 1px solid #2a2a4a; /* Subtle border for separation */
+    padding: 1.5rem; /* More padding */
+    justify-content: center; /* Center the button */
+}
+
+    .modal-footer .btn-secondary {
+        background-color: #6c757d; /* Standard secondary grey */
+        border-color: #6c757d;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        /* Removed transition for background-color and transform */
+    }
+
+/* Removed hover transition for close button */
+/*
+.modal-footer .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+    transform: translateY(-1px);
+}
+*/
+
+/* Global fix for body scrolling jump (essential for fixed modal) */
+body.modal-open {
+    overflow: hidden !important; /* Prevent body scroll */
+    padding-right: 0 !important; /* Ensure no padding is added for scrollbar compensation */
+    /* Since the modal is fixed and not centered, scrollbar compensation is generally not needed on the body itself.
+       If you still see a jump, it might be due to other fixed elements on your page. */
+}
+
+
+/* --- Responsive Adjustments for the Modal --- */
+@media (max-width: 576px) {
+    .modal-dialog {
+        margin: 15px auto 0 auto; /* Adjusted top margin for small screens */
+        width: auto; /* Let it adapt fully */
+    }
+
+    .modal-content {
+        border-radius: 8px; /* Slightly less rounded on small screens */
+    }
+
+    .modal-header {
+        padding: 1rem;
+    }
+
+        .modal-header .modal-title {
+            font-size: 1.3rem;
+        }
+
+    .modal-body {
+        padding: 1rem;
+    }
+
+        .modal-body .lead {
+            font-size: 1rem;
+        }
+
+        .modal-body .form-control,
+        .modal-body .input-group .btn-outline-secondary {
+            font-size: 0.9rem;
+            padding: 0.6rem 0.8rem;
+        }
+
+    .modal-footer {
+        padding: 1rem;
+    }
+
+        .modal-footer .btn-secondary {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+        }
+}

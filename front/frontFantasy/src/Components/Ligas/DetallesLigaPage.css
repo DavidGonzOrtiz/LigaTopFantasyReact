@@ -1,0 +1,340 @@
+/* src/components/DetallesLigaPage.css */
+
+/* Contenedor principal de la página */
+.league-details-page-container {
+    padding: 30px;
+    color: #e0e6eb; /* Texto claro para fondo oscuro */
+    min-height: calc(100vh - var(--header-height, 60px)); /* Ajusta a la altura de la ventana menos el header */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centrar la carta verticalmente */
+    /* Removimos el gap de aquí porque ahora la carta es el único hijo directo que necesitamos centrar */
+}
+
+/* --- NUEVA CLASE PARA LA CARTA PRINCIPAL --- */
+.league-details-card {
+    background-color: rgba(26, 26, 46, 0.9); /* El color de fondo y transparencia solicitados */
+    border-radius: 15px;
+    padding: 40px; /* Padding interno para el contenido de la tarjeta */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    max-width: 1500px; /* Un poco más ancho para acomodar ambas columnas cómodamente */
+    width: 905%; /* Ocupa el 95% del ancho disponible del padre */
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos internos */
+    gap: 25px; /* Espacio entre secciones principales dentro de la tarjeta */
+}
+
+    .league-details-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(108, 158, 235, 0.4);
+    }
+
+
+/* Título de la liga */
+.league-title {
+    font-size: 2.8em;
+    font-weight: 700;
+    color: #6c9eeb; /* Un azul vibrante */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    margin-bottom: 0; /* Ajustado el margen, el gap de .league-details-card lo maneja */
+    text-align: center;
+}
+
+/* Puntos actuales del usuario */
+.my-points {
+    font-size: 1.2em;
+    color: #aab6c2;
+    margin-bottom: 0; /* Ajustado el margen */
+    text-align: center;
+}
+
+    .my-points strong {
+        color: #ffd700; /* Oro para resaltar los puntos */
+        font-size: 1.1em;
+    }
+
+/* Contenedor de las dos columnas (Clasificación y Mi Plantilla) */
+.content-columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%; /* Ahora ocupa el 100% del .league-details-card */
+    max-width: none; /* Eliminar max-width aquí para que se ajuste al padre */
+    justify-content: center;
+}
+
+/* Estilos para cada columna */
+.ranking-column,
+.my-players-column {
+    background-color: rgba(26, 26, 46, 0.9);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+    .ranking-column h2,
+    .my-players-column h2 {
+        color: #e0e6eb;
+        font-size: 1.8em;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #343a40;
+        padding-bottom: 10px;
+        text-align: center;
+    }
+
+/* --- Clasificación de Usuarios --- */
+.ranking-list-container {
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.ranking-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ranking-item {
+    background-color: rgba(26, 26, 46, 0.9);
+    border-radius: 8px;
+    padding: 12px 18px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #3d4247;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease;
+}
+
+    .ranking-item:hover {
+        transform: translateY(-3px);
+        background-color: #343a3f;
+    }
+
+.ranking-position {
+    font-weight: 700;
+    color: #ffd700;
+    font-size: 1.1em;
+    margin-right: 15px;
+    min-width: 30px;
+    text-align: right;
+}
+
+.ranking-username {
+    flex-grow: 1;
+    font-weight: 500;
+    color: #e0e6eb;
+    font-size: 1.05em;
+    white-space: nowrap; /* Evita que el nombre de usuario se rompa */
+    overflow: hidden; /* Oculta el exceso de texto */
+    text-overflow: ellipsis; /* Añade puntos suspensivos si el texto se desborda */
+    max-width: calc(100% - 120px); /* Asegura que no ocupe todo el espacio y deje hueco para pos y score */
+}
+
+.ranking-score {
+    font-weight: 700;
+    color: #8aff8a;
+    font-size: 1.1em;
+    margin-left: 15px;
+    flex-shrink: 0; /* Evita que la puntuación se encoja */
+}
+
+/* --- Mi Plantilla --- */
+.jornada-filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+    .jornada-filter-controls label {
+        color: #aab6c2;
+        font-size: 1em;
+        white-space: nowrap;
+    }
+
+.jornada-dropdown {
+    width: 180px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #4a4f54;
+    background-color: #343a40;
+    color: #e0e6eb;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+    .jornada-dropdown:focus {
+        border-color: #6c9eeb;
+        box-shadow: 0 0 0 0.2rem rgba(108, 158, 235, 0.25);
+        outline: none;
+    }
+
+/* Contenedor de las tarjetas de jugadores */
+.player-list-container {
+    flex-grow: 1;
+    max-height: calc(100vh - 450px); /* Mantener la altura máxima para scroll */
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.player-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Mensajes de estado (cargando, sin datos, error) */
+.loading-state .league-details-card,
+.error-state .league-details-card,
+.no-data-state .league-details-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px;
+    width: 100%;
+    max-width: 800px; /* Hacer que la tarjeta de estado sea más compacta */
+    min-height: 200px; /* Altura mínima para que no se vea vacía */
+}
+
+.error-state .alert-danger {
+    width: 100%;
+}
+
+.no-data-message {
+    color: #aab6c2;
+    font-size: 1.1em;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Estilos de la barra de scroll (webkit para Chrome/Safari) */
+.ranking-list-container::-webkit-scrollbar,
+.player-list-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ranking-list-container::-webkit-scrollbar-track,
+.player-list-container::-webkit-scrollbar-track {
+    background: #2c3034;
+    border-radius: 10px;
+}
+
+.ranking-list-container::-webkit-scrollbar-thumb,
+.player-list-container::-webkit-scrollbar-thumb {
+    background: #6c9eeb;
+    border-radius: 10px;
+}
+
+    .ranking-list-container::-webkit-scrollbar-thumb:hover,
+    .player-list-container::-webkit-scrollbar-thumb:hover {
+        background: #5a8bdb;
+    }
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .league-details-card {
+        padding: 30px;
+        width: 90%; /* Ajuste para pantallas más pequeñas */
+    }
+
+    .content-columns {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .ranking-column,
+    .my-players-column {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .league-title {
+        font-size: 2.2em;
+    }
+
+    .my-points {
+        font-size: 1.1em;
+    }
+
+    .ranking-column h2,
+    .my-players-column h2 {
+        font-size: 1.6em;
+    }
+
+    .player-cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .league-details-page-container {
+        padding: 15px; /* Reducir padding exterior */
+    }
+
+    .league-details-card {
+        padding: 20px; /* Reducir padding interno */
+        border-radius: 10px;
+    }
+
+    .league-title {
+        font-size: 1.8em;
+    }
+
+    .my-points {
+        font-size: 1em;
+    }
+
+    .ranking-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .ranking-position {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+
+    .ranking-username {
+        max-width: 100%; /* Permitir que ocupe todo el ancho disponible */
+        white-space: normal; /* Permitir que el nombre de usuario se envuelva */
+        word-break: break-word; /* Romper palabras largas si es necesario */
+    }
+
+    .ranking-score {
+        margin-left: 0;
+        align-self: flex-end;
+    }
+
+    .jornada-filter-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .jornada-dropdown {
+        width: 100%;
+    }
+
+    .player-cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Tarjetas más pequeñas en móviles muy pequeños */
+    }
+
+
+}
+
+

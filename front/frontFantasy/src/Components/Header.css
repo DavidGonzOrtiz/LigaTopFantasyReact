@@ -1,0 +1,123 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #1a1a1a;
+    color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+
+
+
+/* Header.css */
+
+/* Variables CSS para los colores específicos del tema deportivo */
+:root {
+    --sporty-dark: #1a1a2e; /* Fondo oscuro */
+    --sporty-accent-blue: #0f4c75; /* Azul principal */
+    --sporty-accent-orange: #e76f51; /* Naranja/Rojo vibrante para acentos */
+    --sporty-light-gray: #e0e0e0; /* Texto claro */
+    --sporty-text-shadow: rgba(0, 0, 0, 0.4);
+    --sporty-box-shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos de fondo y sombra principales de la barra de navegación */
+.header-sporty-custom {
+    background-color: var(--sporty-dark) !important; /* Usamos !important para asegurar que sobreescribe bg-dark de Bootstrap */
+    box-shadow: 0 4px 15px var(--sporty-box-shadow);
+    /* No es necesario position: sticky/fixed aquí si lo manejas con Bootstrap utilities o un wrapper */
+    font-family: 'Montserrat', sans-serif; /* Si usas una fuente personalizada, impórtala en tu CSS global o index.html */
+}
+
+/* Estilo del texto del logo (gradiente) */
+.logo-sporty-text {
+    color: var(--sporty-light-gray); /* Fallback */
+    text-shadow: 2px 2px 5px var(--sporty-text-shadow);
+    background: linear-gradient(90deg, var(--sporty-accent-blue), var(--sporty-accent-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* Las propiedades de Bootstrap `fs-2` y `fw-bold` ya se encargan del tamaño y peso */
+}
+
+/* Efecto de sombra para la imagen del logo */
+.logo-sporty-image {
+    filter: drop-shadow(0 0 5px var(--sporty-accent-blue));
+}
+
+/* Estilos personalizados para los enlaces de navegación */
+.custom-nav-link {
+    color: var(--sporty-light-gray) !important; /* !important para sobreescribir el color por defecto de Bootstrap */
+    font-weight: 600;
+    padding: 8px 15px; /* Ajusta el padding para un mejor aspecto */
+    position: relative;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+    .custom-nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 3px;
+        background-color: var(--sporty-accent-orange); /* Subrayado de acento */
+        bottom: -5px;
+        left: 50%; /* Centra el subrayado */
+        transform: translateX(-50%); /* Ajusta el centrado */
+        transition: width 0.3s ease-out;
+    }
+
+    .custom-nav-link:hover {
+        color: var(--sporty-accent-orange) !important;
+        transform: translateY(-2px);
+    }
+
+        .custom-nav-link:hover::after {
+            width: 100%;
+        }
+
+/* Estilos personalizados para los botones de autenticación */
+.auth-btn-register-custom {
+    background-color: var(--sporty-accent-blue) !important;
+    border-color: var(--sporty-accent-blue) !important;
+    color: var(--sporty-light-gray) !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--sporty-box-shadow);
+}
+
+    .auth-btn-register-custom:hover {
+        background-color: var(--sporty-accent-orange) !important;
+        border-color: var(--sporty-accent-orange) !important;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(231, 111, 81, 0.5);
+    }
+
+.auth-btn-login-custom {
+    background-color: transparent !important;
+    color: var(--sporty-accent-orange) !important;
+    border-color: var(--sporty-accent-orange) !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--sporty-box-shadow);
+}
+
+    .auth-btn-login-custom:hover {
+        background-color: var(--sporty-accent-orange) !important;
+        color: var(--sporty-dark) !important; /* El color del texto debe ser oscuro en hover */
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(231, 111, 81, 0.5);
+    }
+
+/* Ajustes para el toggler icon de Bootstrap */
+.navbar-toggler {
+    border-color: var(--sporty-accent-blue) !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28224, 224, 224, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}

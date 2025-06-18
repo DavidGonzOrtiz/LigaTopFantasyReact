@@ -1,0 +1,20 @@
+/* src/index.css (o tu archivo CSS global principal) */
+
+html, body, #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Muy importante para evitar barras de desplazamiento horizontales */
+    box-sizing: border-box; /* Asegura que padding y border se incluyan en width/height */
+}
+
+/* Opcional, pero recomendado para que el fondo oscuro sea el de toda la página */
+body {
+    background-image: url('../../assets/Landing/images/Hero.jpg');
+    background-size: cover; /* This makes the image cover the entire element */
+    background-position: center center; /* This centers the image */
+    background-repeat: no-repeat; /* This prevents the image from repeating */
+    background-attachment: fixed; /* This makes the background image fixed when scrolling */
+    /* background-color: #212529; /* Keep this if you want a fallback color or a subtle tint */
+}

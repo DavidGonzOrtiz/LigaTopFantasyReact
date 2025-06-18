@@ -1,0 +1,246 @@
+/* src/components/Modals/CreateLeagueModal.css */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content-card {
+    background-color: rgba(26, 26, 46, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    width: 90%;
+    color: #e0e6eb;
+    border: 1px solid #343a40;
+    animation: fadeInScale 0.3s ease-out forwards;
+}
+
+    .modal-content-card.modal-large-size {
+        max-width: 1200px; /* Importante para que quepan 5 columnas */
+        width: 95%;
+        padding: 20px;
+    }
+
+/* Animación para el modal */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-header-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #343a40;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.modal-title-card {
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #6c9eeb;
+    margin: 0;
+}
+
+.modal-close-button-card {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #aab6c2;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+    .modal-close-button-card:hover {
+        color: #e0e6eb;
+    }
+
+.modal-body-card {
+    margin-bottom: 25px;
+}
+
+.form-group-card {
+    margin-bottom: 20px;
+}
+
+.form-label-card {
+    display: block;
+    font-size: 1.1rem;
+    color: #e0e6eb;
+    margin-bottom: 10px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.form-control-card {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #212529;
+    border: 1px solid #343a40;
+    border-radius: 8px;
+    color: #e0e6eb;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+    .form-control-card:focus {
+        border-color: #6c9eeb;
+        box-shadow: 0 0 0 0.2rem rgba(108, 158, 235, 0.25);
+        outline: none;
+    }
+
+    .form-control-card::placeholder {
+        color: #aab6c2;
+        opacity: 0.7;
+    }
+
+    .form-control-card:disabled {
+        background-color: #2c3135;
+        cursor: not-allowed;
+        opacity: 0.8;
+    }
+
+.modal-footer-card {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 15px;
+    border-top: 1px solid #343a40;
+}
+
+.btn-primary-card-modal {
+    background-color: #6c9eeb;
+    border-color: #6c9eeb;
+    color: #1a1a2e;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 25px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .btn-primary-card-modal:hover:not(:disabled) {
+        background-color: #5a8cdb;
+        border-color: #5a8cdb;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-primary-card-modal:disabled {
+        background-color: #4a545c;
+        border-color: #4a545c;
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+.btn-secondary-card-modal {
+    background-color: transparent;
+    border: 2px solid #aab6c2;
+    color: #aab6c2;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 25px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+    .btn-secondary-card-modal:hover:not(:disabled) {
+        background-color: rgba(170, 182, 194, 0.1);
+        border-color: #e0e6eb;
+        color: #e0e6eb;
+        transform: translateY(-2px);
+    }
+
+    .btn-secondary-card-modal:disabled {
+        border-color: #4a545c;
+        color: #4a545c;
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+/* Estilos de alertas Bootstrap convertidos a nuestro tema */
+.alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    text-align: left;
+}
+
+.alert-danger {
+    color: #ffcccc;
+    background-color: #3d1b1b;
+    border-color: #8c0000;
+}
+
+.alert-success {
+    color: #ccffcc;
+    background-color: #1b3d1b;
+    border-color: #008c00;
+}
+
+/* NUEVOS ESTILOS PARA ORGANIZAR LOS JUGADORES EN HORIZONTAL */
+.player-display-area {
+    display: flex; /* Habilita Flexbox para los elementos hijos */
+    flex-wrap: wrap; /* Permite que los elementos salten a la siguiente línea */
+    justify-content: center; /* Centra los jugadores horizontalmente */
+    gap: 15px; /* Espacio entre las tarjetas de jugador */
+    padding: 20px; /* Relleno alrededor del área */
+    max-height: 60vh; /* Limita la altura del contenedor para evitar desbordamiento */
+    overflow-y: auto; /* Agrega scroll vertical si los jugadores exceden el max-height */
+    max-width: 100%; /* Asegura que ocupe todo el ancho de su padre (el modal-content-card) */
+    margin: 0 auto; /* Centra el área si tiene un max-width y es menor que el padre */
+}
+
+/* Ajustes para el spinner de carga de jugadores (si es un div con estas clases) */
+.text-center.mt-3 {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    color: #e0e6eb;
+}
+/* src/components/Modals/CreateLeagueModal.css */
+
+/* ... (todo el CSS existente) ... */
+
+/* Estilo específico para el tamaño del modal de Unirse a Liga */
+.modal-content-card.join-league-modal-size {
+    max-width: 900px; /* Un ancho más pequeño, ajusta según necesites */
+    width: 90%; /* Asegura que siga siendo responsivo */
+    padding: 30px; /* Restaurar el padding si se había reducido en el modal-large-size */
+}
+
+/* Ajustes responsivos para este modal específico */
+@media (max-width: 600px) {
+    .modal-content-card.join-league-modal-size {
+        max-width: 90%; /* Asegura que no se desborde en móviles */
+        margin: 0 15px; /* Margen para que no se pegue a los bordes */
+        padding: 25px 20px;
+    }
+}

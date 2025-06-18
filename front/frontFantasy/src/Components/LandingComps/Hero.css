@@ -1,0 +1,491 @@
+/* src/components/Hero.css */
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    color: #e0e6eb;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* --- Contenedor de la Tarjeta (Común para Logueados y No Logueados) --- */
+.hero-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%; /* Permite que la tarjeta se centre dentro del hero-section */
+    padding: 20px; /* Padding para que la tarjeta no pegue los bordes de la pantalla */
+    box-sizing: border-box; /* Incluye padding en el tamaño total */
+}
+
+.hero-card {
+    background-color: rgba(26, 26, 46, 0.9);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+    .hero-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(108, 158, 235, 0.4);
+    }
+
+/* --- Títulos y Subtítulos (LOGUEADOS y NO LOGUEADOS) --- */
+.hero-card-title, .hero-card-title-logged-in {
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #e0e6eb;
+    letter-spacing: 1px;
+}
+
+.hero-card-title-logged-in {
+    color: #6c9eeb;
+    font-weight: 600;
+}
+
+.hero-card-subtitle, .hero-card-subtitle-logged-in {
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 40px;
+    color: #aab6c2;
+    line-height: 1.6;
+}
+
+.hero-card-subtitle-logged-in {
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-bottom: 30px;
+    color: #e0e6eb;
+}
+
+/* --- Contenedor de los Botones (Común) --- */
+.hero-card-actions {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Añadido para que los botones se envuelvan */
+}
+
+/* --- Botones (Común) --- */
+.btn-primary-card-action {
+    background-color: #6c9eeb;
+    border-color: #6c9eeb;
+    color: #1a1a2e;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 14px 35px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+
+    .btn-primary-card-action:hover {
+        background-color: #5a8cdb;
+        border-color: #5a8cdb;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 12px rgba(108, 158, 235, 0.5);
+    }
+
+.btn-secondary-card-action {
+    background-color: transparent;
+    border: 2px solid #e0e6eb;
+    color: #e0e6eb;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 14px 35px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+
+    .btn-secondary-card-action:hover {
+        background-color: rgba(224, 230, 235, 0.1);
+        border-color: #6c9eeb;
+        color: #6c9eeb;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 12px rgba(108, 158, 235, 0.5);
+    }
+
+/* --- Estilos para la tarjeta expandida (Dashboard) --- */
+.hero-card-dashboard {
+    max-width: 1200px;
+    width: 95%;
+    padding: 40px;
+    min-height: 600px;
+}
+
+.dashboard-header {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+/* Renombradas para ser específicas del Hero */
+.hero-dashboard-content-grid {
+    display: flex;
+    width: 100%;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-ligas-column, /* Renombrada */
+.hero-matches-column { /* Renombrada */
+    flex: 1;
+    min-width: 350px;
+    background-color: #1a1a2e;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    height: fit-content;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.hero-ligas-section-title, /* Renombrada */
+.hero-matches-section-title { /* Renombrada */
+    font-size: 1.6rem;
+    color: #6c9eeb;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Estilos para la lista de partidos (renombradas) */
+.hero-matches-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%; /* Asegura que la lista ocupe el ancho disponible */
+}
+
+.hero-match-item-card {
+    background-color: rgba(26, 26, 46, 0.9);
+    border: 1px solid #343a40;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Eliminar el ancho fijo si lo tenías, dejar que el flex-item se ajuste */
+}
+
+
+    .hero-match-item-card:hover { /* Renombrada */
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    }
+
+/* Contenedor principal para los equipos y el "VS" (renombrada) */
+.hero-match-teams-container {
+    display: flex;
+    justify-content: space-around; /* Distribuir espacio entre los elementos */
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    gap: 10px; /* Reducir un poco el gap para dar más espacio a los nombres */
+    flex-wrap: nowrap; /* Evita que los bloques de equipo envuelvan en línea */
+}
+
+/* Información de un solo equipo (escudo + nombre) (renombradas) */
+.hero-team-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1; /* Permite que cada bloque de equipo ocupe el espacio disponible */
+    min-width: 0; /* Permite que el contenido interno se encoja */
+    /* Eliminar margin-right/left auto aquí para usar flexbox de forma más eficiente */
+}
+
+    .hero-team-info.local { /* Renombrada */
+        margin-right: auto; /* Empuja el equipo local a la izquierda */
+    }
+
+    .hero-team-info.visitante { /* Renombrada */
+        margin-left: auto; /* Empuja el equipo visitante a la derecha */
+    }
+
+.hero-team-logo {
+    width: 70px; /* Ligeramente más pequeños para dar espacio al texto */
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 5px;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.hero-team-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e0e6eb;
+    text-align: center;
+    margin: 0;
+    /* --- CLAVE PARA QUE NO SE DESBORDE --- */
+    word-break: break-word; /* Permite que el texto se rompa en palabras largas */
+    overflow-wrap: break-word; /* También ayuda con el desbordamiento de palabras largas */
+    /* Si prefieres truncar con puntos suspensivos en una sola línea, usa esto en su lugar: */
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+    /* max-width: 100%; */ /* Asegura que el truncado funcione correctamente */
+    /* ------------------------------------- */
+}
+
+.hero-match-vs {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #aab6c2;
+    margin: 0 10px; /* Ajustado el margen */
+    flex-shrink: 0; /* Evitar que el "VS" se encoja */
+}
+
+/* Estilos para el resultado del partido (renombradas) */
+.hero-match-score { /* Renombrada */
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #6c9eeb; /* Color de acento para el resultado */
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+/* Ajustes para la información de partido (fecha, liga) (renombradas) */
+.hero-match-details { /* Renombrada */
+    font-size: 1rem;
+    color: #aab6c2;
+    margin-bottom: 3px;
+}
+
+.hero-match-league { /* Renombrada */
+    font-size: 0.9rem;
+    color: #8c9ba8;
+    font-style: italic;
+    margin-top: 5px; /* Pequeño margen superior para separarlo */
+}
+
+/* Estilos para los mensajes de alerta dentro de UserLeaguesList (renombradas) */
+.hero-league-list-alert { /* Renombrada */
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    text-align: center;
+    width: 100%;
+}
+
+    .hero-league-list-alert.alert-info { /* Renombrada */
+        color: #8bb8e0;
+        background-color: #1a2a3a;
+        border-color: #3b6b9e;
+    }
+
+    .hero-league-list-alert.alert-danger { /* Renombrada */
+        color: #ffcccc;
+        background-color: #3d1b1b;
+        border-color: #8c0000;
+    }
+
+    .hero-league-list-alert.alert-warning { /* Renombrada */
+        color: #e0d080;
+        background-color: #3a3a1a;
+        border-color: #9e9e3b;
+    }
+
+/* Estilos para los botones de jornada (renombradas) */
+.hero-jornada-buttons { /* Renombrada */
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.hero-jornada-btn { /* Renombrada */
+    background-color: #343a40;
+    color: #e0e6eb;
+    border: 1px solid #495057;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    font-weight: 500;
+}
+
+    .hero-jornada-btn:hover { /* Renombrada */
+        background-color: #495057;
+        border-color: #6c9eeb;
+        color: #6c9eeb;
+    }
+
+    .hero-jornada-btn.active { /* Renombrada */
+        background-color: #6c9eeb;
+        border-color: #6c9eeb;
+        color: #1a1a2e;
+        font-weight: 700;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+/* --- Media Queries para responsividad (AJUSTADOS y Renombrados) --- */
+@media (max-width: 992px) {
+    .hero-dashboard-content-grid { /* Renombrada */
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .hero-ligas-column, /* Renombrada */
+    .hero-matches-column { /* Renombrada */
+        max-height: none;
+        overflow-y: visible;
+    }
+
+    .hero-card-dashboard {
+        padding: 30px;
+        min-height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-card-title, .hero-card-title-logged-in {
+        font-size: 3rem;
+    }
+
+    .hero-card-subtitle, .hero-card-subtitle-logged-in {
+        font-size: 1.3rem;
+    }
+
+    .hero-card-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn-primary-card-action, .btn-secondary-card-action {
+        width: 80%;
+        max-width: 300px;
+        padding: 12px 25px;
+    }
+
+    .hero-card {
+        padding: 30px;
+    }
+
+    .hero-ligas-column, /* Renombrada */
+    .hero-matches-column { /* Renombrada */
+        min-width: 90%;
+    }
+
+    .hero-jornada-buttons { /* Renombrada */
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .hero-jornada-btn { /* Renombrada */
+        flex-grow: 1;
+        max-width: 120px;
+    }
+
+    /* Ajustes específicos para los partidos en pantallas pequeñas (renombradas) */
+    .hero-match-teams-container { /* Renombrada */
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .hero-team-info { /* Renombrada */
+        width: auto;
+        min-width: 80px;
+    }
+
+    .hero-team-logo { /* Renombrada */
+        width: 60px; /* Tamaño un poco más pequeño para pantallas pequeñas */
+        height: 60px;
+    }
+
+    .hero-team-name { /* Renombrada */
+        font-size: 0.85rem;
+    }
+
+    .hero-match-vs { /* Renombrada */
+        font-size: 1.3rem;
+        margin: 0 8px;
+    }
+
+    .hero-match-score { /* Renombrada */
+        font-size: 1.1rem;
+    }
+
+    .hero-match-details, .hero-match-league { /* Renombradas */
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-card-title, .hero-card-title-logged-in {
+        font-size: 2.5rem;
+    }
+
+    .hero-card-subtitle, .hero-card-subtitle-logged-in {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+
+    .hero-card-actions {
+        gap: 10px;
+    }
+
+    .btn-primary-card-action, .btn-secondary-card-action {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .hero-card {
+        padding: 25px;
+        border-radius: 10px;
+    }
+    /* Ajustes extra pequeños (renombradas) */
+    .hero-match-teams-container { /* Renombrada */
+        gap: 5px;
+    }
+
+    .hero-team-logo { /* Renombrada */
+        width: 50px; /* Tamaño aún más pequeño para móviles muy estrechos */
+        height: 50px;
+    }
+
+    .hero-team-name { /* Renombrada */
+        font-size: 0.8rem;
+    }
+
+    .hero-match-vs { /* Renombrada */
+        font-size: 1.1rem;
+        margin: 0 5px;
+    }
+
+    .hero-match-score { /* Renombrada */
+        font-size: 1rem;
+    }
+}

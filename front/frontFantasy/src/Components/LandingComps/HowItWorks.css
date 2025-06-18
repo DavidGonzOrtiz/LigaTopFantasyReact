@@ -1,0 +1,86 @@
+/* HowItWorks.css */
+
+/* Variables CSS para los colores específicos del tema deportivo */
+:root {
+    --sporty-dark-bg: #1a1a2e; /* Fondo muy oscuro */
+    --sporty-card-bg: #2b2b40; /* Fondo de tarjeta un poco más claro que el oscuro */
+    --sporty-accent-blue: #0f4c75; /* Azul principal */
+    --sporty-accent-orange: #e76f51; /* Naranja/Rojo vibrante para acentos */
+    --sporty-light-gray: #e0e0e0; /* Texto claro */
+    --sporty-text-shadow: rgba(0, 0, 0, 0.6); /* Sombra más fuerte para el texto */
+    --sporty-box-shadow-intense: rgba(0, 0, 0, 0.5); /* Sombra para tarjetas */
+}
+
+/* Sección principal */
+.how-it-works-section {
+    background-color: var(--sporty-dark-bg); /* Fondo oscuro general */
+    color: var(--sporty-light-gray);
+    padding-top: 6rem !important; /* Más padding arriba */
+    padding-bottom: 6rem !important; /* Más padding abajo */
+}
+
+    /* Título */
+    .how-it-works-section h2 {
+        letter-spacing: 2px; /* Espaciado de letras para un look más "pro" */
+        text-shadow: 3px 3px 7px var(--sporty-text-shadow); /* Sombra para el título */
+        font-size: 3.5rem; /* Tamaño del título */
+    }
+
+/* Gradiente para el texto del título (similar al logo) */
+.text-gradient-sporty {
+    background: linear-gradient(90deg, var(--sporty-accent-blue), var(--sporty-accent-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Estilo de las tarjetas de los pasos */
+.how-it-works-card {
+    background-color: var(--sporty-card-bg); /* Fondo de la tarjeta */
+    border-radius: 15px; /* Bordes redondeados */
+    overflow: hidden; /* Para asegurar que todo dentro se ajuste */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil */
+}
+
+    .how-it-works-card:hover {
+        transform: translateY(-10px); /* Efecto de elevación al pasar el ratón */
+        box-shadow: 0 15px 30px var(--sporty-box-shadow-intense) !important; /* Sombra más pronunciada */
+    }
+
+/* Círculo del icono */
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, var(--sporty-accent-blue), var(--sporty-accent-orange)); /* Gradiente en el círculo */
+    border-radius: 50%; /* Círculo perfecto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem; /* Espacio debajo del círculo */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Sombra para el círculo */
+    transition: transform 0.3s ease;
+}
+
+.how-it-works-card:hover .icon-circle {
+    transform: scale(1.1); /* Efecto de crecimiento al pasar el ratón por la tarjeta */
+}
+
+/* Estilo del icono dentro del círculo */
+.icon-sporty {
+    font-size: 3.5rem; /* Tamaño grande del icono */
+    color: var(--sporty-light-gray); /* Color claro para el icono */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Sombra para el icono */
+}
+
+/* Título de la tarjeta */
+.how-it-works-card .card-title {
+    color: var(--sporty-accent-orange); /* Color de acento para los títulos de las tarjetas */
+    font-size: 1.8rem; /* Tamaño de fuente para los títulos de las tarjetas */
+}
+
+/* Texto de la tarjeta */
+.how-it-works-card .card-text {
+    color: var(--sporty-light-gray); /* Color para el texto del párrafo */
+    font-size: 1.05rem;
+    line-height: 1.6;
+}

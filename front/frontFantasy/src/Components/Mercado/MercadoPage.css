@@ -1,0 +1,331 @@
+/* --- Mercado Container --- */
+.mercado-container {
+    background-color: #121633;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 1200px; /* Limits the max width of the large container */
+    margin: 30px auto; /* Centers horizontally */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+    /* height: 70vh; <-- Consider removing or making this more flexible */
+    min-height: 70vh; /* Use min-height instead of fixed height for better flexibility */
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Players List Grid --- */
+.jugadores-lista {
+    display: grid;
+    /* Use auto-fit to allow for flexible column numbers based on content and available space */
+    /* The minmax function ensures cards are at least 250px wide, but can grow to 1fr */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px; /* Increased gap for better visual separation */
+    padding: 10px 0 0 0;
+    overflow-y: auto; /* Vertical scroll only here */
+    flex-grow: 1; /* Occupies all vertical space within the container */
+    justify-content: center; /* Centers items in the grid if there's leftover space */
+}
+
+/* --- Player Card for Mercado --- */
+.jugador-card-mercado {
+    border: 1px solid #343a40; /* Darker, subtle border */
+    padding: 1rem;
+    border-radius: 12px; /* Slightly more rounded corners */
+    background-color: #1a1a2e;
+    color: #e0e6eb;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes the button to the bottom */
+    /* min-height: 250px; /* Consider removing or setting a relative height */
+    height: 100%; /* Ensures all cards within a row take full height of the row */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .jugador-card-mercado:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .jugador-card-mercado h3 {
+        font-family: 'Segoe UI', 'Roboto', sans-serif;
+        font-weight: 700; /* Bolder for titles */
+        font-size: 1.4rem; /* Slightly larger title */
+        margin-bottom: 10px;
+        color: #6c9eeb;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Subtle text shadow */
+    }
+
+    .jugador-card-mercado p {
+        margin: 5px 0;
+        font-size: 0.95rem;
+        line-height: 1.4; /* Better readability */
+    }
+
+        .jugador-card-mercado p strong {
+            font-weight: 600;
+            color: #a0c4ff; /* A slightly lighter blue for emphasis */
+        }
+
+    .jugador-card-mercado .precio-jugador { /* Specific class for the price */
+        font-weight: 700;
+        color: #ff6363; /* Use the vibrant red */
+        margin-top: 12px;
+        margin-bottom: 15px;
+        font-size: 1.1rem; /* Slightly larger for price */
+    }
+
+    .jugador-card-mercado button {
+        margin-top: auto; /* Pushes the button to the bottom of the flex container */
+        background-color: #28a745; /* Bootstrap-like success green */
+        border: none;
+        padding: 10px 18px; /* More padding for a comfortable click area */
+        border-radius: 8px; /* Slightly more rounded */
+        color: #fff; /* White text for contrast */
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+        .jugador-card-mercado button:hover {
+            background-color: #218838; /* Darker green on hover */
+            transform: translateY(-2px); /* Subtle lift */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .jugador-card-mercado button:disabled {
+            background-color: #6c757d; /* Bootstrap-like secondary grey */
+            cursor: not-allowed;
+            opacity: 0.7;
+            transform: none;
+            box-shadow: none;
+        }
+
+/* --- Messages and States --- */
+.mercado-loading,
+.mercado-error,
+.mercado-empty {
+    text-align: center;
+    font-size: 1.3rem; /* Slightly larger messages */
+    padding: 40px; /* More padding */
+    color: #e0e6eb;
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    flex-grow: 1; /* Ensures messages also take available space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(30, 30, 50, 0.6); /* Subtle background for messages */
+    border-radius: 12px;
+}
+
+/* --- Scrollbar Customization --- */
+.jugadores-lista::-webkit-scrollbar {
+    width: 8px;
+}
+
+.jugadores-lista::-webkit-scrollbar-track {
+    background: #1a1a2e;
+    border-radius: 10px;
+}
+
+.jugadores-lista::-webkit-scrollbar-thumb {
+    background-color: #6c9eeb;
+    border-radius: 10px;
+}
+
+/* --- Countdown Timer Style --- */
+.tiempo-restante {
+    font-weight: 700; /* Bolder */
+    color: #ff6363; /* Vibrant red */
+    margin-top: 12px;
+    margin-bottom: 15px;
+    font-size: 1.1rem; /* Slightly larger */
+    background-color: rgba(255, 99, 99, 0.15); /* Slightly more prominent background */
+    padding: 8px 12px; /* More padding */
+    border-radius: 8px;
+    display: inline-block;
+    border: 1px solid rgba(255, 99, 99, 0.3); /* Subtle border */
+    box-shadow: 0 1px 5px rgba(255, 99, 99, 0.2);
+}
+
+/* --- Responsive Adjustments --- */
+
+/* For screens smaller than 1200px (Laptops, smaller Desktops) */
+@media (max-width: 1200px) {
+    .mercado-container {
+        max-width: 960px;
+        padding: 15px;
+        margin: 20px auto;
+        min-height: 75vh; /* Adjust min-height */
+    }
+
+    .jugadores-lista {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjust minmax */
+        gap: 15px;
+    }
+
+    .jugador-card-mercado h3 {
+        font-size: 1.3rem;
+    }
+
+    .jugador-card-mercado p {
+        font-size: 0.9rem;
+    }
+
+    .jugador-card-mercado .precio-jugador {
+        font-size: 1.05rem;
+    }
+
+    .jugador-card-mercado button {
+        padding: 9px 16px;
+        font-size: 0.95rem;
+    }
+
+    .tiempo-restante {
+        font-size: 1rem;
+        padding: 6px 10px;
+    }
+}
+
+/* For tablet screens (portrait or landscape) and smaller desktops (<992px) */
+@media (max-width: 992px) {
+    .mercado-container {
+        max-width: 720px;
+        margin: 15px auto;
+        min-height: 80vh;
+        padding: 15px;
+    }
+
+    .jugadores-lista {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adjust minmax for more columns if space allows */
+        gap: 15px;
+    }
+
+    .jugador-card-mercado {
+        padding: 0.9rem;
+    }
+
+        .jugador-card-mercado h3 {
+            font-size: 1.2rem;
+        }
+
+        .jugador-card-mercado p {
+            font-size: 0.88rem;
+        }
+
+        .jugador-card-mercado .precio-jugador {
+            font-size: 1rem;
+        }
+
+        .jugador-card-mercado button {
+            padding: 8px 14px;
+            font-size: 0.9rem;
+        }
+
+    .mercado-loading,
+    .mercado-error,
+    .mercado-empty {
+        font-size: 1.2rem;
+        padding: 30px;
+    }
+
+    .tiempo-restante {
+        font-size: 0.95rem;
+        padding: 5px 8px;
+    }
+}
+
+/* For small tablet screens and large mobiles (<768px) */
+@media (max-width: 768px) {
+    .mercado-container {
+        max-width: 95%; /* Occupy almost full width */
+        padding: 15px 10px;
+        margin: 10px auto;
+        min-height: 85vh; /* Adapts better vertically */
+    }
+
+    .jugadores-lista {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* 2-3 columns depending on exact width */
+        gap: 10px;
+    }
+
+    .jugador-card-mercado {
+        padding: 0.8rem;
+    }
+
+        .jugador-card-mercado h3 {
+            font-size: 1.1rem;
+        }
+
+        .jugador-card-mercado p {
+            font-size: 0.85rem;
+        }
+
+        .jugador-card-mercado .precio-jugador {
+            font-size: 0.95rem;
+        }
+
+        .jugador-card-mercado button {
+            padding: 7px 12px;
+            font-size: 0.85rem;
+        }
+
+    .mercado-loading,
+    .mercado-error,
+    .mercado-empty {
+        font-size: 1.1rem;
+        padding: 25px;
+    }
+
+    .tiempo-restante {
+        font-size: 0.9rem;
+        padding: 4px 7px;
+    }
+}
+
+/* For mobile screens (<480px) */
+@media (max-width: 480px) {
+    .mercado-container {
+        padding: 10px;
+        margin: 5px auto;
+        min-height: 90vh; /* Maximize height on mobiles */
+    }
+
+    .jugadores-lista {
+        grid-template-columns: 1fr; /* 1 column, stacked */
+        gap: 10px;
+    }
+
+    .jugador-card-mercado {
+        padding: 0.7rem;
+    }
+
+        .jugador-card-mercado h3 {
+            font-size: 1.05rem;
+        }
+
+        .jugador-card-mercado p {
+            font-size: 0.8rem;
+        }
+
+        .jugador-card-mercado .precio-jugador {
+            font-size: 0.9rem;
+        }
+
+        .jugador-card-mercado button {
+            padding: 6px 10px;
+            font-size: 0.8rem;
+        }
+
+    .mercado-loading,
+    .mercado-error,
+    .mercado-empty {
+        font-size: 1rem;
+        padding: 20px;
+    }
+
+    .tiempo-restante {
+        font-size: 0.85rem;
+        padding: 3px 6px;
+    }
+}

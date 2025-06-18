@@ -1,0 +1,76 @@
+/* Components/LandingComps/CallToAction.css */
+
+.call-to-action-section {
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364); /* Degradado de fondo oscuro y deportivo */
+    /* O puedes usar una imagen de fondo sutil si lo prefieres */
+    /* background-image: url('../assets/img/sports-texture-bg.webp'); */
+    /* background-size: cover; */
+    /* background-position: center; */
+    padding: 6rem 0; /* Más padding para que la sección sea prominente */
+    position: relative;
+    overflow: hidden; /* Asegura que cualquier animación no desborde */
+}
+
+/* Para el degradado en el título, coherente con Features y Gallery */
+.text-gradient-sporty {
+    background: linear-gradient(45deg, #00c6ff, #0072ff); /* Azul deportivo */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent; /* Fallback */
+}
+
+/* Estilos para el botón animado */
+.animated-button {
+    position: relative;
+    overflow: hidden;
+    z-index: 1; /* Asegura que el texto esté por encima del efecto */
+    transition: all 0.3s ease; /* Transición para propiedades básicas */
+    padding: 0.8rem 2.5rem; /* Ajusta el padding para un mejor tamaño */
+    font-size: 1.25rem; /* Tamaño de fuente del botón */
+    font-weight: bold;
+    border-radius: 50px; /* Bordes más redondeados para un aspecto moderno */
+    border: 2px solid #00c6ff; /* Borde con color del degradado */
+    background-color: transparent; /* Inicialmente transparente para mostrar el borde */
+    color: #fff; /* Color de texto del botón */
+}
+
+    .animated-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%; /* Inicia fuera del botón a la izquierda */
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(0, 198, 255, 0.4), transparent); /* Efecto de brillo/swipe */
+        transition: all 0.5s ease;
+        z-index: -1; /* Detrás del texto del botón */
+    }
+
+    .animated-button:hover {
+        color: #fff; /* Asegura el color del texto al pasar el ratón */
+        transform: translateY(-3px); /* Pequeño levantamiento */
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 198, 255, 0.4); /* Sombra al pasar el ratón */
+        background-color: rgba(0, 198, 255, 0.1); /* Fondo sutil al pasar el ratón */
+    }
+
+        .animated-button:hover::before {
+            left: 100%; /* Mueve el efecto de brillo a la derecha */
+        }
+
+    .animated-button:active {
+        transform: translateY(0); /* Vuelve a la posición original al hacer clic */
+        box-shadow: none; /* Elimina la sombra al hacer clic */
+    }
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .call-to-action-section {
+        padding: 4rem 0;
+    }
+
+    .animated-button {
+        padding: 0.7rem 2rem;
+        font-size: 1.1rem;
+    }
+}
